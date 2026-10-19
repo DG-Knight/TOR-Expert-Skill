@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tor-government-expert",
+  "version": "1.0.0",
+  "description": "ผู้ช่วยร่าง ตรวจ และวิเคราะห์ TOR กับความเสี่ยงการจัดซื้อจัดจ้างภาครัฐไทยโดยอ้างอิงคลังเอกสารที่ตรวจสอบสถานะแล้ว",
+  "author": {
+    "name": "Apiwat Dindang"
+  },
+  "keywords": [
+    "tor",
+    "thai-government-procurement",
+    "egp",
+    "appeal-risk"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "TOR งานภาครัฐ Expert",
+        "shortDescription": "ร่างและตรวจ TOR งานภาครัฐไทยจากคลังความรู้ที่ตรวจสถานะแล้ว",
+        "longDescription": "ช่วยร่าง ตรวจ และวิเคราะห์ TOR พร้อมตรวจความชัดเจน การตรวจรับ การแข่งขัน การอุทธรณ์ การทุจริต และการบริหารสัญญา โดยแยกข้อเท็จจริง หลักเกณฑ์ การวิเคราะห์ และข้อเสนอแนะ",
+        "developerName": "Apiwat Dindang",
+        "category": "Productivity",
+        "capabilities": ["Read"],
+        "brandColor": "#1E3A5F",
+        "defaultPrompt": [
+          "ตรวจ TOR ฉบับนี้และสรุป Red Flags พร้อมข้อความเสนอแก้ไข",
+          "ช่วยร่าง TOR ที่เชื่อม Requirement กับเกณฑ์ตรวจรับ",
+          "ตรวจความเสี่ยงล็อกสเปกและการอุทธรณ์ของข้อกำหนดนี้"
+        ]
+      }
+    }
+  }
+}
