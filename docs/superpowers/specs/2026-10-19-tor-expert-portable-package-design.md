@@ -26,13 +26,18 @@ tor-expert/
 │   ├── SKILL.md
 │   ├── references/
 │   └── assets/
-├── knowledge/
+├── TOR_EXPERT_CURRENT_KNOWLEDGE/
+│   ├── 00_README_AND_STATUS.md
 │   ├── 01_LEGAL_CORE/
 │   ├── 02_CURRENT_CIRCULARS/
-│   ├── 03_SPECIAL_RULES/
-│   ├── 04_PRACTICAL_REFERENCE/
-│   ├── 90_PENDING_VERIFICATION/
-│   └── 99_ARCHIVE_SUPERSEDED/
+│   ├── 03_SPECIAL_REGULATIONS/
+│   ├── 04_EGP_AND_APPEALS/
+│   ├── 05_PRACTICAL_TOR_REVIEW/
+│   ├── 06_KNOWLEDGE_MANIFEST.csv
+│   ├── 07_KNOWLEDGE_INDEX.md
+│   ├── 08_SOURCE_AND_STATUS_LOG.md
+│   ├── 09_REGRESSION_TESTS.md
+│   └── 99_SUPERSEDED_ARCHIVE/
 ├── gemini/
 ├── scripts/
 ├── tests/
@@ -44,7 +49,7 @@ tor-expert/
 1. ดาวน์โหลดจาก URL ต้นทางที่บันทึกไว้ในทะเบียนเท่านั้น
 2. ตรวจชนิดไฟล์ ลายเซ็น PDF จำนวนหน้า ข้อความตัวอย่าง และ SHA-256
 3. จัดเอกสารเข้าโฟลเดอร์ตามสถานะที่ยืนยันได้
-4. Skill อ่านทะเบียนก่อนเลือกเอกสาร และห้ามใช้ไฟล์ใน `90_PENDING_VERIFICATION` หรือ `99_ARCHIVE_SUPERSEDED` เป็นหลักฐานกฎหมายปัจจุบัน
+4. Skill อ่านทะเบียนก่อนเลือกเอกสาร และห้ามใช้รายการ `UNVERIFIED` หรือไฟล์ใน `99_SUPERSEDED_ARCHIVE` เป็นหลักฐานกฎหมายปัจจุบัน
 5. คำตอบต้องแยกข้อเท็จจริง หลักเกณฑ์ การวิเคราะห์ และข้อเสนอแนะ พร้อมระบุเมื่อข้อมูลยังไม่เพียงพอ
 
 ## หลักความปลอดภัยและความถูกต้อง
