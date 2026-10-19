@@ -3,6 +3,7 @@ import hashlib
 import json
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 
@@ -11,6 +12,37 @@ KNOWLEDGE = ROOT / "TOR_EXPERT_CURRENT_KNOWLEDGE"
 
 
 class PackageStructureTests(unittest.TestCase):
+    def test_repository_declares_reuse_and_third_party_terms(self):
+        license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
+        notices = (ROOT / "THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8")
+
+        self.assertIn("MIT License", license_text)
+        self.assertIn("Copyright (c) 2026 DG-Knight", license_text)
+        self.assertIn("TOR_EXPERT_CURRENT_KNOWLEDGE", notices)
+        self.assertIn("ไม่ได้อยู่ภายใต้ MIT License", notices)
+
+    def test_distribution_archives_include_license_notices(self):
+        archives = [
+            ROOT / "dist" / "TOR_EXPERT_CURRENT_KNOWLEDGE.zip",
+            ROOT / "dist" / "tor-government-expert-chatgpt-plugin.zip",
+            ROOT / "dist" / "tor-government-expert-gemini-skill.zip",
+        ]
+        for archive in archives:
+            with self.subTest(archive=archive.name):
+                with zipfile.ZipFile(archive) as bundle:
+                    names = {Path(name).name for name in bundle.namelist()}
+                self.assertIn("LICENSE", names)
+                self.assertIn("THIRD_PARTY_NOTICES.md", names)
+
+    def test_distribution_archives_preserve_thai_names(self):
+        archive = ROOT / "dist" / "TOR_EXPERT_CURRENT_KNOWLEDGE.zip"
+        expected = (
+            "TOR_EXPERT_CURRENT_KNOWLEDGE/02_CURRENT_CIRCULARS/"
+            "CR-777_ระยะเวลายืนราคา.pdf"
+        )
+        with zipfile.ZipFile(archive) as bundle:
+            self.assertIn(expected, bundle.namelist())
+
     def test_powershell_scripts_are_windows_legacy_safe(self):
         for path in (ROOT / "scripts").glob("*.ps1"):
             with self.subTest(path=path.name):
