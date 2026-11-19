@@ -1,0 +1,29 @@
+{
+  "skill_checks": [
+    {
+      "id": "scope-and-source-policy",
+      "required_files": ["SKILL.md", "references/legal-source-policy.md"],
+      "required_terms": ["CURRENT", "AMENDED", "SUPERSEDED", "UNVERIFIED"]
+    },
+    {
+      "id": "evidence-first-output",
+      "required_files": ["references/output-formats.md"],
+      "required_terms": ["[ข้อเท็จจริง]", "[การวิเคราะห์]", "[ข้อเสนอแนะ]"]
+    },
+    {
+      "id": "measurable-requirements",
+      "required_files": ["references/tor-review-workflow.md"],
+      "required_terms": ["Metric", "Evidence", "Test Method", "Pass Criteria"]
+    },
+    {
+      "id": "procurement-risk",
+      "required_files": ["references/tor-review-workflow.md"],
+      "required_terms": ["Spec Lock", "Appeal Risk", "Integrity Risk"]
+    },
+    {
+      "id": "insufficient-evidence",
+      "required_files": ["SKILL.md"],
+      "required_terms": ["ยังสรุปไม่ได้จากข้อมูลที่มี", "Vendor Lock-in", "PDPA"]
+    }
+  ]
+}

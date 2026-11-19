@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "tor-government-expert",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ผู้ช่วยร่าง ตรวจ และวิเคราะห์ TOR กับความเสี่ยงการจัดซื้อจัดจ้างภาครัฐไทยโดยอ้างอิงคลังเอกสารที่ตรวจสอบสถานะแล้ว",
   "author": {
     "name": "Apiwat Dindang"

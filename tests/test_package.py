@@ -12,6 +12,20 @@ KNOWLEDGE = ROOT / "TOR_EXPERT_CURRENT_KNOWLEDGE"
 
 
 class PackageStructureTests(unittest.TestCase):
+    def test_plugin_validator_accepts_manifest_and_packages(self):
+        from scripts.validate_plugin import validate_plugin_manifest
+
+        errors = validate_plugin_manifest(ROOT / "plugin.json")
+        self.assertEqual(errors, [])
+
+    def test_skill_validator_accepts_both_skill_copies(self):
+        from scripts.validate_skill import validate_skill
+
+        self.assertEqual(validate_skill(ROOT / "skills" / "tor-government-expert"), [])
+        self.assertEqual(
+            validate_skill(ROOT / ".gemini" / "skills" / "tor-government-expert"), []
+        )
+
     def test_repository_declares_reuse_and_third_party_terms(self):
         license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
         notices = (ROOT / "THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8")
@@ -47,6 +61,12 @@ class PackageStructureTests(unittest.TestCase):
         for path in (ROOT / "scripts").glob("*.ps1"):
             with self.subTest(path=path.name):
                 path.read_bytes().decode("ascii")
+
+    def test_gemini_sync_uses_staging_before_replacement(self):
+        script = (ROOT / "scripts" / "sync_gemini_skill.ps1").read_text(encoding="ascii")
+        self.assertIn("$staging", script)
+        self.assertIn("Move-Item", script)
+        self.assertIn("GEMINI_SKILL_SYNC_OK", script)
 
     def test_downloader_stops_after_network_failure(self):
         script = (ROOT / "scripts" / "download_knowledge.ps1").read_text(

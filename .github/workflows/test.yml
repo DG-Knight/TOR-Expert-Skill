@@ -1,0 +1,51 @@
+name: TOR Expert checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        shell: pwsh
+        run: python -m pip install pypdf pyyaml
+
+      - name: Build packages
+        shell: pwsh
+        run: ./scripts/build_packages.ps1
+
+      - name: Run automated tests
+        shell: pwsh
+        env:
+          PYTHONUTF8: "1"
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate Plugin manifest
+        shell: pwsh
+        run: python scripts/validate_plugin.py plugin.json
+
+      - name: Evaluate Skill policy coverage
+        shell: pwsh
+        env:
+          PYTHONUTF8: "1"
+        run: python scripts/evaluate_skill_cases.py --skill skills/tor-government-expert --fixture tests/fixtures/tor_quality_cases.json --report tmp/quality-report.json
+
+      - name: Validate Skill frontmatter
+        shell: pwsh
+        env:
+          PYTHONUTF8: "1"
+        run: |
+          python scripts/validate_skill.py skills/tor-government-expert
+          python scripts/validate_skill.py .gemini/skills/tor-government-expert

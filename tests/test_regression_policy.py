@@ -34,7 +34,7 @@ class LegalStatusRegressionTests(unittest.TestCase):
         rows = manifest_rows()
         self.assertEqual(rows["AR-001"]["status"], "UNVERIFIED")
         self.assertEqual(rows["EG-001"]["status"], "UNVERIFIED")
-        self.assertEqual(rows["OLD-570"]["status"], "UNVERIFIED")
+        self.assertEqual(rows["OLD-570"]["status"], "SUPERSEDED")
         skill = (ROOT / "skills" / "tor-government-expert" / "SKILL.md").read_text(
             encoding="utf-8"
         )

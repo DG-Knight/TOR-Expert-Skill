@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-11-19",
+  "summary": {"passed": 5, "failed": 0, "total": 5},
+  "cases": [
+    "scope-and-source-policy",
+    "evidence-first-output",
+    "measurable-requirements",
+    "procurement-risk",
+    "insufficient-evidence"
+  ],
+  "note": "เป็นการตรวจโครงสร้างนโยบายและกรณีทดสอบแบบ deterministic ไม่ใช่การรับรองความถูกต้องทางกฎหมายของโครงการใดโครงการหนึ่ง"
+}
